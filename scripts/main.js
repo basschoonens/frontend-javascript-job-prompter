@@ -72,3 +72,56 @@ const departments = {
 }
 
 console.log(departments);
+console.log("De afdeling sales heeft " + departments.sales.numberOfEmployees + " medewerkers")
+console.log(`De afdeling sales heeft " ${departments.sales.numberOfEmployees}  " medewerkers`)
+console.log("Marketing is een leuke afdeling om te werken. " + departments.marketing.description)
+console.log("De afdeling Customer Service heeft " + departments["customer-service"].numberOfEmployees + " medewerkers")
+console.log("Sales is een uitdagende afdeling om te werken als Verkoopmanager. " + departments.sales.jobs[1].description)
+
+const name = prompt('Hoi! Hoe heet je?');
+console.log(name);
+
+////////// Opdracht 2 //////////
+
+const userInput = prompt('Over welke afdeling wil je meer informatie? Kies uit: [marketing / sales / customer-service]').toLowerCase();
+
+if (userInput in departments) {
+    console.log(`Je koos ${userInput}. ${departments[userInput].description}`);
+} else {
+    console.error('Ongeldige keuze. Probeer het opnieuw door de pagina te verversen.');
+    document.getElementById('error-message').textContent = `Ongeldige keuze. Probeer het opnieuw door de pagina te verversen`;
+}
+
+console.log(`${userInput} is een leuke afdeling om te werken. Er werken op dit moment ${departments[userInput].numberOfEmployees} medewerkers. `)
+
+
+//////// opdracht 3 & 4 & 5 /////////
+
+const templateLiteral = prompt(`Je koos ${userInput}. Over welke functie wil je meer weten? Voer een getal in:
+        0: ${departments[userInput].jobs[0].title}
+        1: ${departments[userInput].jobs[1].title}
+        2: ${departments[userInput].jobs[2].title}
+        3: ${departments[userInput].jobs[3].title}
+        `)
+
+console.log(`Je koos ${templateLiteral}.`);
+
+/////// Vraagje voor feedback. Als ik de regels 111 & 112 hieronder uit de comments haal werkt de foutmelding (opdracht 5b laatste regel) niet. Ik snap niet waarom. ////////
+
+// console.log(`Je koos: ${departments[userInput].jobs[templateLiteral].title}. Een uitdagende rol! ${departments[userInput].jobs[templateLiteral].description}`);
+// document.getElementById('error-message').textContent = `Ongeldige keuze. Probeer het opnieuw door de pagina te verversen`;
+
+if (templateLiteral === "0" || templateLiteral === "1" || templateLiteral === "2" || templateLiteral === "3"){
+
+    console.log(`Je koos ${templateLiteral}. ${departments[userInput].jobs[templateLiteral].description}`)
+    document.getElementById('department-description').textContent = `${departments[userInput].description}`;
+    document.getElementById('role-title').textContent = `${departments[userInput].jobs[templateLiteral].title}`;
+    document.getElementById('role-description').textContent = `${departments[userInput].jobs[templateLiteral].description}`;
+
+} else {
+    console.error(`Ongeldige keuze. Probeer het opnieuw door de pagina te verversen.`)
+    document.getElementById('error-message').textContent = `Ongeldige keuze. Probeer het opnieuw door de pagina te verversen`;
+
+}
+
+// document.getElementById('role-title').textContent = `Mijn naam is : ${[name]}`;
